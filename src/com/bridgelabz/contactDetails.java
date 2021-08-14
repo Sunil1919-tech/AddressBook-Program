@@ -48,23 +48,18 @@ public class contactDetails {
     public void setState(String state) {
         this.state = state;
     }
-
     public int getZip() {
         return zip;
     }
-
     public void setZip(int zip) {
         this.zip = zip;
     }
-
     public int getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
     public String getEmail() {
         return email;
     }
@@ -79,14 +74,15 @@ public class contactDetails {
      */
     @Override
     public String toString() {
-        return
-                "firstName= " + firstName + '\'' +
-                "lastName=" + lastName + '\'' +
-                " addressCity=" + addressCity + '\'' +
-                " state=" + state + '\'' +
-                " zip=" + zip +
-                " phoneNumber=" + phoneNumber +
-                " email=" + email + '\'' ;
+        return "ContactDetails { " +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", addressCity='" + addressCity + '\'' +
+                ", state='" + state + '\'' +
+                ", zip=" + zip +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                '}';
 
     }
 }
