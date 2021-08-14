@@ -36,6 +36,6 @@ public class newAddressBook {
         person.setZip(zip.intValue());
         person.setPhoneNumber(phoneNumber.intValue());
         person.setEmail(email);
-        System.out.println("The Details Of Contact Is : " + person);
+        System.out.println("The Contact Details of "+firstName+ "\n"+ person);
     }
 }
