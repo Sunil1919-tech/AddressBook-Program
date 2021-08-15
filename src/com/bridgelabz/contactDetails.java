@@ -86,7 +86,7 @@ public class contactDetails {
         return phoneNumber;
     }
 
-    public void setPhoneNum(long phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
