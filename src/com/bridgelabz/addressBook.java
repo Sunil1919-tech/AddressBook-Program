@@ -53,6 +53,17 @@ public class addressBook {
     }
 
     /*
+   Declaring The View Person Method By City Name
+   Using Java Streams To View Contact By using City Name
+    */
+    public static void viewPersonByCity(String cityName1) {
+        List<contactDetails> list = contactList.stream().filter(g -> g.getAddressCity().equalsIgnoreCase(cityName1)).collect(Collectors.toList());
+        for (contactDetails contact : list) {
+            System.out.println("Contact List :" + contact);
+        }
+    }
+
+    /*
     Declaring The Add Contact Method
     If Duplicate Entry Is Possible It Prints Person Already Exists
     And Printing The Contact Details Of Person
