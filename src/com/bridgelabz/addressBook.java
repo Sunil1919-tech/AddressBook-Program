@@ -1,7 +1,9 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class addressBook {
 
@@ -21,7 +23,7 @@ public class addressBook {
         return contactList;
     }
 
-    ArrayList<contactDetails> contactList = new ArrayList<>();
+    static ArrayList<contactDetails> contactList = new ArrayList<>();
 
     /*
    Declaring check Duplicate Entry Method
@@ -37,6 +39,17 @@ public class addressBook {
             }
         }
         return check;
+    }
+
+    /*
+   Declaring Search Person By City And FirstName
+   Using Java Streams To Search By using CityName And FirstName
+    */
+    public static void searchPersonByCity(String cityName, String firstName) {
+        List<contactDetails> personList = contactList.stream().filter(p -> p.getAddressCity().equalsIgnoreCase(cityName)).filter(p -> (p.getFirstName()).equalsIgnoreCase(firstName)).collect(Collectors.toList());
+        for (contactDetails contact : personList) {
+            System.out.println("Search result: " + contact);
+        }
     }
 
     /*

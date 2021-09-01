@@ -35,7 +35,7 @@ public class addressBookMain {
                 String firstName = sc.nextLine();
                 System.out.println("Enter last name:");
                 String lastName = sc.nextLine();
-                System.out.println("Enter address name:");
+                System.out.println("Enter address City:");
                 String address = sc.nextLine();
                 System.out.println("Enter state name:");
                 String state = sc.nextLine();
