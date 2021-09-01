@@ -7,6 +7,7 @@ public class addressBook {
 
     public String name;
     Scanner sc = new Scanner(System.in);
+
     /*
     Declaring The Add Contact Method
     And Entering The Contact Details By Using Scanner Class
@@ -15,27 +16,46 @@ public class addressBook {
     public addressBook(String name) {
         this.name = name;
     }
+
     public ArrayList<contactDetails> getAddressBook() {
         return contactList;
     }
+
     ArrayList<contactDetails> contactList = new ArrayList<>();
+
     /*
-    Declaring The Add Contact Method
-    And Entering The Contact Details By Using Scanner Class
-    And Printing The Contact Details Of Person
+   Declaring check Duplicate Entry Method
+   Checking For Duplicate Entries By Using Boolean Type
     */
-    public void addContact(contactDetails contact) {
-        for (contactDetails value : contactList) {
-            if (value.equals(contact)) {
-                System.out.println("The person already exists!!!");
+    public boolean checkDuplicateEntry(contactDetails contact) {
+        boolean check = false;
+        for (contactDetails duplicateEntry : contactList) {
+            if (duplicateEntry.equals(contact)) {
+                check = true;
+            } else {
+                check = false;
             }
         }
-        contactList.add(contact);
-        System.out.println("ADDRESS BOOK---> " + contactList);
-        for (contactDetails contact1 : contactList) {
-            System.out.println("CONTACT LIST---> " + contact1);
-        }
+        return check;
     }
+
+    /*
+    Declaring The Add Contact Method
+    If Duplicate Entry Is Possible It Prints Person Already Exists
+    And Printing The Contact Details Of Person
+    */
+    public boolean addContact(contactDetails contact) {
+        boolean entryCheck = checkDuplicateEntry(contact);
+        if (!entryCheck) {
+            contactList.add(contact);
+            System.out.println("Contact added successfully!!");
+        } else {
+            System.out.println("The person already exists!!!");
+        }
+        System.out.println("Address Book Data : " + contactList);
+        return true;
+    }
+
     /*
     Declaring The Edit Contact Method
     TO Edit The Details Of Contact
@@ -80,13 +100,13 @@ public class addressBook {
                         case 6:
                             System.out.println("Enter new zipcode:");
                             String newZipcode = sc.next();
-                            contact.setZip(choice.longValue());
+                            contact.setZip(newZipcode);
                             System.out.println(contact);
                             break;
                         case 7:
                             System.out.println("Enter new phone number :");
                             String newPhone = sc.next();
-                            contact.setPhoneNumber(choice.longValue());
+                            contact.setPhoneNumber(newPhone);
                             System.out.println(contact);
                             break;
                         case 8:
@@ -103,6 +123,7 @@ public class addressBook {
             }
         }
     }
+
     /*
 Declaring The Delete Contact Method
 TO Details The Details Of Contact

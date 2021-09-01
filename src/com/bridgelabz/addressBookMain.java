@@ -1,16 +1,18 @@
 package com.bridgelabz;
 //imported collections HashMap Map packages
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 /**
-purpose - To create Address Book
-Declaring Main method Here
-@author Sunil
- @version 16.0
- @since 12/08/2021
+ * purpose - To create Address Book
+ * Declaring Main method Here
+ *
+ * @author Sunil
+ * @version 16.0
+ * @since 12/08/2021
  */
 public class addressBookMain {
     public static Map<String, addressBook> addressBookHashMap = new HashMap<>();
@@ -43,7 +45,7 @@ public class addressBookMain {
                 String phoneNumber = sc.nextLine();
                 System.out.println("Enter emailId number:");
                 String email = sc.nextLine();
-                contactDetails contact = new contactDetails(firstName,lastName,address,state,zipcode,phoneNumber,email,cityForMap);
+                contactDetails contact = new contactDetails(firstName, lastName, address, state, zipcode, phoneNumber, email);
                 System.out.println("Contact added successfully!!");
                 for (Map.Entry<String, addressBook> entry : addressBookHashMap.entrySet()) {
                     if (entry.getKey().equalsIgnoreCase(cityForMap)) {
