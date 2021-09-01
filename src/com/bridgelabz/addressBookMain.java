@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static com.bridgelabz.addressBook.viewPersonByCity;
+import static com.bridgelabz.addressBook.*;
 
 /**
  * purpose - To create Address Book
@@ -106,23 +106,29 @@ public class addressBookMain {
                     }
                     break;
                 case 4:
+                    System.out.println("Enter CityName , First Name you want to search:");
+                    String cityName = scanner.next();
+                    String firstName = scanner.next();
+                    searchPersonByCity(cityName, firstName);
+                    break;
+
+                case 5:
                     System.out.println(Collections.singletonList(addressBookHashMap));
                     for (Map.Entry<String, addressBook> entry : addressBookHashMap.entrySet()) {
                         System.out.println(entry.getKey() + entry.getValue().getAddressBook());
                     }
                     break;
 
-                case 5:
-                    System.out.println(Collections.singletonList(addressBookHashMap));
-                    for (Map.Entry<String,addressBook> entry : addressBookHashMap.entrySet()) {
-                        System.out.println(entry.getKey() + entry.getValue().getAddressBook()); }
-                    break;
-
                 case 6:
                     System.out.println("Enter The Name Of City Of Contact");
                     String cityName1 = scanner.next();
                     viewPersonByCity(cityName1);
+                    break;
+                case 7:
+                    System.out.println("Enter The Name Of City");
+                    String cityName2 = scanner.next();
+                    countContactsByUsingCity(cityName2);
             }
-        } while (choice != 7);
+        } while (choice != 8);
     }
 }
