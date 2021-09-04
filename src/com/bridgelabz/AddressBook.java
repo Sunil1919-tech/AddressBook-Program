@@ -76,15 +76,26 @@ public class AddressBook {
         System.out.println("Contact List :" + count1);
 
     }
+
     /*
       Declaring Sort Method
       Sorting The Details Of Contact By Using Names
       Using Stream method
      */
-    public static void sortByName(){
+    public static void sortByName() {
         List<ContactDetails> list = contactList.stream().collect(Collectors.toList());
-        list.stream().sorted((g1, g2) -> ((String)g1.getFirstName()).compareTo(g2.getFirstName()))
-                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
+        list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
+                .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+    }
+
+    /*
+   Declaring Sort Method
+   Sorting The Details Of Contact By City
+   */
+    public static void sortByCity() {
+        List<ContactDetails> list = contactList.stream().collect(Collectors.toList());
+        list.stream().sorted((g1, g2) -> ((String) g1.getAddressCity()).compareTo(g2.getAddressCity()))
+                .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
     }
 
     /*
