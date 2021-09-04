@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class addressBook {
+public class AddressBook {
 
     public String name;
     Scanner sc = new Scanner(System.in);
@@ -15,23 +15,23 @@ public class addressBook {
     And Entering The Contact Details By Using Scanner Class
     And Printing The Contact Details Of Person
      */
-    public addressBook(String name) {
+    public AddressBook(String name) {
         this.name = name;
     }
 
-    public ArrayList<contactDetails> getAddressBook() {
+    public ArrayList<ContactDetails> getAddressBook() {
         return contactList;
     }
 
-    static ArrayList<contactDetails> contactList = new ArrayList<>();
+    static ArrayList<ContactDetails> contactList = new ArrayList<>();
 
     /*
    Declaring check Duplicate Entry Method
    Checking For Duplicate Entries By Using Boolean Type
     */
-    public boolean checkDuplicateEntry(contactDetails contact) {
+    public boolean checkDuplicateEntry(ContactDetails contact) {
         boolean check = false;
-        for (contactDetails duplicateEntry : contactList) {
+        for (ContactDetails duplicateEntry : contactList) {
             if (duplicateEntry.equals(contact)) {
                 check = true;
             } else {
@@ -46,8 +46,8 @@ public class addressBook {
    Using Java Streams To Search By using CityName And FirstName
     */
     public static void searchPersonByCity(String cityName, String firstName) {
-        List<contactDetails> personList = contactList.stream().filter(p -> p.getAddressCity().equalsIgnoreCase(cityName)).filter(p -> (p.getFirstName()).equalsIgnoreCase(firstName)).collect(Collectors.toList());
-        for (contactDetails contact : personList) {
+        List<ContactDetails> personList = contactList.stream().filter(p -> p.getAddressCity().equalsIgnoreCase(cityName)).filter(p -> (p.getFirstName()).equalsIgnoreCase(firstName)).collect(Collectors.toList());
+        for (ContactDetails contact : personList) {
             System.out.println("Search result: " + contact);
         }
     }
@@ -57,8 +57,8 @@ public class addressBook {
    Using Java Streams To View Contact By using City Name
     */
     public static void viewPersonByCity(String cityName1) {
-        List<contactDetails> list = contactList.stream().filter(g -> g.getAddressCity().equalsIgnoreCase(cityName1)).collect(Collectors.toList());
-        for (contactDetails contact : list) {
+        List<ContactDetails> list = contactList.stream().filter(g -> g.getAddressCity().equalsIgnoreCase(cityName1)).collect(Collectors.toList());
+        for (ContactDetails contact : list) {
             System.out.println("Contact List :" + contact);
         }
     }
@@ -70,11 +70,21 @@ public class addressBook {
     public static void countContactsByUsingCity(String cityName2) {
         long count = 0;
         long count1 = contactList.stream().filter(g -> g.getAddressCity().equalsIgnoreCase(cityName2)).count();
-        for (contactDetails contact : contactList) {
+        for (ContactDetails contact : contactList) {
             count1 += count;
         }
         System.out.println("Contact List :" + count1);
 
+    }
+    /*
+      Declaring Sort Method
+      Sorting The Details Of Contact By Using Names
+      Using Stream method
+     */
+    public static void sortByName(){
+        List<ContactDetails> list = contactList.stream().collect(Collectors.toList());
+        list.stream().sorted((g1, g2) -> ((String)g1.getFirstName()).compareTo(g2.getFirstName()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
     }
 
     /*
@@ -82,7 +92,7 @@ public class addressBook {
     If Duplicate Entry Is Possible It Prints Person Already Exists
     And Printing The Contact Details Of Person
     */
-    public boolean addContact(contactDetails contact) {
+    public boolean addContact(ContactDetails contact) {
         boolean entryCheck = checkDuplicateEntry(contact);
         if (!entryCheck) {
             contactList.add(contact);
@@ -104,7 +114,7 @@ public class addressBook {
         System.out.println(" Enter the first name of the contact : ");
         String checkName;
         Integer choice;
-        for (contactDetails contact : contactList) {
+        for (ContactDetails contact : contactList) {
             checkName = contact.getFirstName();
             if (firstName.equalsIgnoreCase(checkName)) {
                 do {
@@ -169,7 +179,7 @@ The Details Of Contact Delete By Using FirstName
  */
     public void deleteContact(String firstName) {
         String checkName2;
-        for (contactDetails contact : contactList) {
+        for (ContactDetails contact : contactList) {
             checkName2 = contact.getFirstName();
             System.out.println(checkName2);
             if (firstName.equalsIgnoreCase(checkName2)) {

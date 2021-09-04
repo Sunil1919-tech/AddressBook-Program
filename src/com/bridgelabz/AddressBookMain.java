@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static com.bridgelabz.addressBook.*;
+import static com.bridgelabz.AddressBook.*;
 
 /**
  * purpose - To create Address Book
@@ -16,8 +16,8 @@ import static com.bridgelabz.addressBook.*;
  * @version 16.0
  * @since 12/08/2021
  */
-public class addressBookMain {
-    public static Map<String, addressBook> addressBookHashMap = new HashMap<>();
+public class AddressBookMain {
+    public static Map<String, AddressBook> addressBookHashMap = new HashMap<>();
     Scanner sc = new Scanner(System.in);
 
     public void addDataToAddressBook() {
@@ -25,8 +25,8 @@ public class addressBookMain {
         do {
             System.out.println("Enter the name of city");
             String cityForMap = sc.nextLine();
-            addressBook addressBook = new addressBook(cityForMap);
-            for (Map.Entry<String, addressBook> entry : addressBookHashMap.entrySet()) {
+            AddressBook addressBook = new AddressBook(cityForMap);
+            for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
                 if (entry.getKey().equals(cityForMap)) {
                     addressBook = entry.getValue();
                 }
@@ -47,9 +47,9 @@ public class addressBookMain {
                 String phoneNumber = sc.nextLine();
                 System.out.println("Enter emailId number:");
                 String email = sc.nextLine();
-                contactDetails contact = new contactDetails(firstName, lastName, address, state, zipcode, phoneNumber, email);
+                ContactDetails contact = new ContactDetails(firstName, lastName, address, state, zipcode, phoneNumber, email);
                 System.out.println("Contact added successfully!!");
-                for (Map.Entry<String, addressBook> entry : addressBookHashMap.entrySet()) {
+                for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
                     if (entry.getKey().equalsIgnoreCase(cityForMap)) {
                         entry.getValue().addContact(contact);
                     }
@@ -77,14 +77,14 @@ public class addressBookMain {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    new addressBookMain().addDataToAddressBook(); //Add Contact Details
+                    new AddressBookMain().addDataToAddressBook(); //Add Contact Details
                     break;
                 case 2:
                     System.out.println("Enter the address book name (city)");
                     String city = scanner.next();
                     System.out.println("Enter First Name of the contact you want to edit");
                     String checkName = scanner.next();
-                    for (Map.Entry<String, addressBook> entry : addressBookHashMap.entrySet()) {
+                    for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
                         if (entry.getKey().equalsIgnoreCase(city)) {
                             entry.getValue().editContact(checkName);
                         } else {
@@ -97,7 +97,7 @@ public class addressBookMain {
                     city = scanner.next();
                     System.out.println("Enter First Name of the contact you want to delete");
                     String checkName1 = scanner.next();
-                    for (Map.Entry<String, addressBook> entry : addressBookHashMap.entrySet()) {
+                    for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
                         if (entry.getKey().equalsIgnoreCase(city)) {
                             entry.getValue().deleteContact(checkName1);
                         } else {
@@ -114,7 +114,7 @@ public class addressBookMain {
 
                 case 5:
                     System.out.println(Collections.singletonList(addressBookHashMap));
-                    for (Map.Entry<String, addressBook> entry : addressBookHashMap.entrySet()) {
+                    for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
                         System.out.println(entry.getKey() + entry.getValue().getAddressBook());
                     }
                     break;
@@ -128,7 +128,10 @@ public class addressBookMain {
                     System.out.println("Enter The Name Of City");
                     String cityName2 = scanner.next();
                     countContactsByUsingCity(cityName2);
+                    break;
+                case 8:
+                    sortByName();
             }
-        } while (choice != 8);
+        } while (choice != 9);
     }
 }

@@ -6,7 +6,7 @@ And Declaring The Variables
 And Defining The Getter And Setter Method
  */
 //variables declaring in private class
-public class contactDetails {
+public class ContactDetails {
     //variable Declaration
     private String firstName;
     private String lastName;
@@ -20,7 +20,7 @@ public class contactDetails {
     Declaring The Parametrised Constructor
     To Initialise The Parameters
      */
-    contactDetails(String firstName, String lastName, String addressCity, String state, String email, String zip, String phoneNumber) {
+    ContactDetails(String firstName, String lastName, String addressCity, String state, String email, String zip, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressCity = addressCity;
