@@ -131,7 +131,11 @@ public class AddressBookMain {
                     break;
                 case 8:
                     sortByName();
+                    break;
+                case 9:
+                    sortByCity();
+                    break;
             }
-        } while (choice != 9);
+        } while (choice != 10);
     }
 }
