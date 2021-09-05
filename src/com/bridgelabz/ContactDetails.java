@@ -20,7 +20,7 @@ public class ContactDetails {
     Declaring The Parametrised Constructor
     To Initialise The Parameters
      */
-    ContactDetails(String firstName, String lastName, String addressCity, String state, String email, String zip, String phoneNumber) {
+    public ContactDetails() {
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressCity = addressCity;
@@ -93,6 +93,17 @@ public class ContactDetails {
     public void setPhoneNumber(String phoneNumber) {
 
         this.phoneNumber = phoneNumber;
+    }
+    public boolean equals(Object object) {
+        boolean result = false;
+        if (object == this) {
+            return true;
+        }
+        ContactDetails contact = (ContactDetails) object;
+        if (contact.firstName.equals(this.firstName) && contact.lastName.equals(this.lastName)) {
+            result = true;
+        }
+        return result;
     }
 
     /*

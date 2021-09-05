@@ -7,28 +7,30 @@ import java.util.stream.Collectors;
 
 public class AddressBook {
 
-    public String name;
+    private final String cityForMap;
+    public ArrayList<ContactDetails> name;
     Scanner sc = new Scanner(System.in);
+
+    public AddressBook(String cityForMap) {
+        this.cityForMap= cityForMap;
+    }
 
     /*
     Declaring The Add Contact Method
     And Entering The Contact Details By Using Scanner Class
     And Printing The Contact Details Of Person
      */
-    public AddressBook(String name) {
-        this.name = name;
-    }
-
+//    public AddressBook(String name) {
+//        this.name = name;
+//    }
     public ArrayList<ContactDetails> getAddressBook() {
         return contactList;
     }
-
     static ArrayList<ContactDetails> contactList = new ArrayList<>();
-
     /*
-   Declaring check Duplicate Entry Method
-   Checking For Duplicate Entries By Using Boolean Type
-    */
+    Declaring check Duplicate Entry Method
+    Checking For Duplicate Entries By Using Boolean Type
+     */
     public boolean checkDuplicateEntry(ContactDetails contact) {
         boolean check = false;
         for (ContactDetails duplicateEntry : contactList) {
@@ -40,81 +42,71 @@ public class AddressBook {
         }
         return check;
     }
-
     /*
-   Declaring Search Person By City And FirstName
-   Using Java Streams To Search By using CityName And FirstName
-    */
+    Declaring Search Person By City And FirstName
+    Using Java Streams To Search By using CityName And FirstName
+     */
     public static void searchPersonByCity(String cityName, String firstName) {
-        List<ContactDetails> personList = contactList.stream().filter(p -> p.getAddressCity().equalsIgnoreCase(cityName)).filter(p -> (p.getFirstName()).equalsIgnoreCase(firstName)).collect(Collectors.toList());
+        List<ContactDetails> personList =contactList.stream().filter(p -> p.getAddressCity().equalsIgnoreCase(cityName)).filter(p -> (p.getFirstName()).equalsIgnoreCase(firstName)).collect(Collectors.toList());
         for (ContactDetails contact : personList) {
             System.out.println("Search result: " + contact);
         }
     }
-
     /*
-   Declaring The View Person Method By City Name
-   Using Java Streams To View Contact By using City Name
-    */
-    public static void viewPersonByCity(String cityName1) {
+    Declaring The View Person Method By City Name
+    Using Java Streams To View Contact By using City Name
+     */
+    public static void viewPersonByCity(String cityName1){
         List<ContactDetails> list = contactList.stream().filter(g -> g.getAddressCity().equalsIgnoreCase(cityName1)).collect(Collectors.toList());
-        for (ContactDetails contact : list) {
-            System.out.println("Contact List :" + contact);
+        for (ContactDetails contact : list){
+            System.out.println("Contact List :" +contact);
         }
     }
-
     /*
-    Declaring The Count Contacts Method By City Name
-    Using Java Streams To Count The Contacts By using City Name
+   Declaring The Count Contacts Method By City Name
+   Using Java Streams To Count The Contacts By using City Name
     */
     public static void countContactsByUsingCity(String cityName2) {
-        long count = 0;
+        long count=0;
         long count1 = contactList.stream().filter(g -> g.getAddressCity().equalsIgnoreCase(cityName2)).count();
-        for (ContactDetails contact : contactList) {
+        for(ContactDetails contact :contactList ){
             count1 += count;
         }
-        System.out.println("Contact List :" + count1);
-
+        System.out.println("Contact List :" +count1);
     }
-
     /*
       Declaring Sort Method
       Sorting The Details Of Contact By Using Names
-      Using Stream method
      */
-    public static void sortByName() {
+    public static void sortByName(){
         List<ContactDetails> list = contactList.stream().collect(Collectors.toList());
-        list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
-                .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+        list.stream().sorted((g1, g2) -> ((String)g1.getFirstName()).compareTo(g2.getFirstName()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
     }
-
     /*
-   Declaring Sort Method
-   Sorting The Details Of Contact By City
-   */
-    public static void sortByCity() {
+    Declaring Sort Method
+    Sorting The Details Of Contact By City
+    */
+    public static void sortByCity(){
         List<ContactDetails> list = contactList.stream().collect(Collectors.toList());
-        list.stream().sorted((g1, g2) -> ((String) g1.getAddressCity()).compareTo(g2.getAddressCity()))
-                .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+        list.stream().sorted((g1, g2) -> ((String)g1.getAddressCity()).compareTo(g2.getAddressCity()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
     }
-
     /*
     Declaring The Add Contact Method
     If Duplicate Entry Is Possible It Prints Person Already Exists
     And Printing The Contact Details Of Person
     */
     public boolean addContact(ContactDetails contact) {
-        boolean entryCheck = checkDuplicateEntry(contact);
+        boolean entryCheck= checkDuplicateEntry(contact);
         if (!entryCheck) {
             contactList.add(contact);
             System.out.println("Contact added successfully!!");
         } else {
             System.out.println("The person already exists!!!");
-        }
-        System.out.println("Address Book Data : " + contactList);
+        }System.out.println("Address Book Data : " +contactList);
         return true;
     }
-
     /*
     Declaring The Edit Contact Method
     TO Edit The Details Of Contact
@@ -182,7 +174,6 @@ public class AddressBook {
             }
         }
     }
-
     /*
 Declaring The Delete Contact Method
 TO Details The Details Of Contact
